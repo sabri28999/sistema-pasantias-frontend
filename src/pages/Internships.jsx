@@ -10,7 +10,7 @@ const Internships = () => {
     const fetchInternships = async () => {
       try {
         const res = await axios.get('http://localhost:3001/api/internships');
-        setInternships(res.data);
+        setInternships(Array.isArray(res.data) ? res.data : []); // <-- fuerza array
       } catch (err) {
         setInternships([]);
       } finally {
