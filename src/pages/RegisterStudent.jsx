@@ -180,6 +180,7 @@ const RegisterStudent = () => {
                 helperText={formik.touched.anioCursada && formik.errors.anioCursada}
                 margin="normal"
                 variant="outlined"
+                min={1}
               />
               <TextField
                 fullWidth

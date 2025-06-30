@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { TextField, Button, Container, Typography, Box, Alert, Paper } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Alert, Paper, Link } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -57,78 +57,111 @@ const RegisterCompany = () => {
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
           {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
           {!success && (
-            <form onSubmit={formik.handleSubmit}>
-              <TextField
-                fullWidth
-                id="nombre"
-                name="nombre"
-                label="Nombre de la empresa"
-                value={formik.values.nombre}
-                onChange={formik.handleChange}
-                error={formik.touched.nombre && Boolean(formik.errors.nombre)}
-                helperText={formik.touched.nombre && formik.errors.nombre}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="Email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                id="direccion"
-                name="direccion"
-                label="Dirección"
-                value={formik.values.direccion}
-                onChange={formik.handleChange}
-                error={formik.touched.direccion && Boolean(formik.errors.direccion)}
-                helperText={formik.touched.direccion && formik.errors.direccion}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                id="telefono"
-                name="telefono"
-                label="Teléfono"
-                value={formik.values.telefono}
-                onChange={formik.handleChange}
-                error={formik.touched.telefono && Boolean(formik.errors.telefono)}
-                helperText={formik.touched.telefono && formik.errors.telefono}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                fullWidth
-                id="descripcion"
-                name="descripcion"
-                label="Descripción de la empresa"
-                multiline
-                rows={4}
-                value={formik.values.descripcion}
-                onChange={formik.handleChange}
-                error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
-                helperText={formik.touched.descripcion && formik.errors.descripcion}
-                margin="normal"
-                variant="outlined"
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{ mt: 3, mb: 2, py: 1.5, fontWeight: 600, fontSize: '1.1rem' }}
-              >
-                Registrarse
-              </Button>
-            </form>
+            <>
+              <form onSubmit={formik.handleSubmit}>
+                <TextField
+                  fullWidth
+                  id="nombre"
+                  name="nombre"
+                  label="Nombre de la empresa"
+                  value={formik.values.nombre}
+                  onChange={formik.handleChange}
+                  error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+                  helperText={formik.touched.nombre && formik.errors.nombre}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  id="email"
+                  name="email"
+                  label="Email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  id="direccion"
+                  name="direccion"
+                  label="Dirección"
+                  value={formik.values.direccion}
+                  onChange={formik.handleChange}
+                  error={formik.touched.direccion && Boolean(formik.errors.direccion)}
+                  helperText={formik.touched.direccion && formik.errors.direccion}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  id="telefono"
+                  name="telefono"
+                  label="Teléfono"
+                  value={formik.values.telefono}
+                  onChange={formik.handleChange}
+                  error={formik.touched.telefono && Boolean(formik.errors.telefono)}
+                  helperText={formik.touched.telefono && formik.errors.telefono}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  id="descripcion"
+                  name="descripcion"
+                  label="Descripción de la empresa"
+                  multiline
+                  rows={4}
+                  value={formik.values.descripcion}
+                  onChange={formik.handleChange}
+                  error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
+                  helperText={formik.touched.descripcion && formik.errors.descripcion}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 3, mb: 2, py: 1.5, fontWeight: 600, fontSize: '1.1rem' }}
+                >
+                  Registrarse
+                </Button>
+              </form>
+              
+              <Typography variant="body2" align="center" sx={{ mt: 2, color: 'text.secondary' }}>
+                Para completar el registro, también debe llenar el siguiente formulario:
+              </Typography>
+              
+              <Box sx={{ mt: 2, textAlign: 'center' }}>
+                <Link 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfmTkzbbJkinozjiAvSP69jp2Pulk8Q00CGdRNwniUurOYX3g/viewform" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    display: 'inline-block',
+                    px: 3,
+                    py: 1,
+                    backgroundColor: '#4285F4',
+                    color: 'white',
+                    borderRadius: 2,
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    '&:hover': {
+                      backgroundColor: '#3367D6',
+                    }
+                  }}
+                >
+                  Formulario Adicional de Pasantías
+                </Link>
+              </Box>
+              
+              <Typography variant="caption" display="block" align="center" sx={{ mt: 1, color: 'text.secondary' }}>
+                * Ambos pasos (este formulario y el de Google) son obligatorios para completar el registro.
+              </Typography>
+            </>
           )}
         </Paper>
       </Container>
