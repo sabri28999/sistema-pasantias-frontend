@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo-utn.png';
 
 const Navbar = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  let user = null;
+  try {
+    const userString = localStorage.getItem('user');
+    user = userString && userString !== 'undefined' ? JSON.parse(userString) : null;
+  } catch {
+    user = null;
+  }
 
   return (
     <AppBar position="static" sx={{ background: 'linear-gradient(90deg, #1976d2 60%, #1565c0 100%)' }}>
